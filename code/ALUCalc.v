@@ -5,12 +5,14 @@
 //  0->8: E = eleIn 
 //  9->17: F = eleIn 
 //  18->26: eleOut = G
+//  40    : c = eleIn
 //      27: eleOut = det   
 //      28: G = E' 
 //      29: G = A+B
 //      30: G = A-B
 //      31: G = A*B
-//      32: G = det(A) 
+//      32: G = c*A 
+//      33: G = det(A) 
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -28,7 +30,7 @@ reg [31:0] E00, E01, E02,
            G00, G01, G02, 
            G10, G11, G12,
            G20, G21, G22, 
-           det;   
+           det, c;    
 
 always @(posedge clk, posedge reset) begin 
         if (reset) begin 
@@ -98,6 +100,36 @@ always @(posedge clk, posedge reset) begin
                 G22 <= E22-F22;  
             end 
             
+            else if (sel == 31) begin 
+                G00 <= (E00*F00)+(E01*F10)+(E02*F20); 
+                G01 <= (E00*F01)+(E01*F11)+(E02*F21); 
+                G02 <= (E00*F02)+(E01*F12)+(E02*F22);  
+                G10 <= (E10*F00)+(E11*F10)+(E12*F20); 
+                G11 <= (E10*F01)+(E11*F11)+(E12*F21);  
+                G12 <= (E10*F02)+(E11*F12)+(E12*F22); 
+                G20 <= (E20*F00)+(E21*F10)+(E22*F20); 
+                G21 <= (E20*F01)+(E21*F11)+(E22*F21);
+                G22 <= (E20*F02)+(E21*F12)+(E22*F22);  
+            end 
+            
+            else if (sel == 32) begin 
+                G00 <= c*E00; 
+                G01 <= c*E01; 
+                G02 <= c*E02; 
+                G10 <= c*E10; 
+                G11 <= c*E11; 
+                G12 <= c*E12; 
+                G20 <= c*E20; 
+                G21 <= c*E21;
+                G22 <= c*E22; 
+            end 
+            
+            else if (sel == 33) begin 
+                det <= E00*(E11*E22 - E21*E12)-
+                       E01*(E10*E22 - E20*E12)+
+                       E02*(E10*E21 - E20*E11);
+            end 
+            
         
         
         end 
@@ -134,6 +166,7 @@ always @(posedge clk, posedge reset) begin
            25: eleOut = G21; 
            26: eleOut = G22;
            27: eleOut = det; 
+           40: c = eleIn; 
           default: eleOut = det; 
         endcase
     end  
