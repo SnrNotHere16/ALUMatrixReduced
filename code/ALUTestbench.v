@@ -136,8 +136,111 @@ always #5 clk = ~clk;
        #20 dummy = select(26,2);
        #1 dummy = 5;
        $write("%d\n", eleOut);
-
        
-       
+  //******************************
+        #20 dummy = select (30,2); //A-B
+       //Print out 
+       #20 dummy = select(30,2); 
+       $write("A-B =\n");
+       #21 dummy = select(18,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(19,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(20,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+       #20 dummy = select(21,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(22,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(23,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+        #20 dummy = select(24,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(25,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(26,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+  //******************************
+        #20 dummy = select (31,2); //A-B
+       //Print out 
+       #20 dummy = select(31,2); 
+       $write("A*B =\n");
+       #21 dummy = select(18,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(19,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(20,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+       #20 dummy = select(21,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(22,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(23,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+        #20 dummy = select(24,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(25,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(26,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+  //******************************
+        #20 dummy = select(40,2);
+        #20 dummy = select (32,2); //2*A
+       //Print out 
+       #20 dummy = select(32,2); 
+       $write("2*A =\n");
+       #21 dummy = select(18,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(19,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(20,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+       #20 dummy = select(21,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(22,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(23,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+        #20 dummy = select(24,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(25,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(26,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+//******************************
+        #20 dummy = select (33,2); //det(A)
+       //Print out 
+       #20 dummy = select(33,2); 
+       $write("det(A) =\n");
+       #21 dummy = select(27,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
      end 
 endmodule
