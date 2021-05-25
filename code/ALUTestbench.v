@@ -28,7 +28,7 @@ always #5 clk = ~clk;
     initial begin 
        clk  = 0;
        reset  = 1;
-       dummy = select(18,30); 
        #50 reset  = 0;    
+       dummy = select(18,30); 
      end 
 endmodule
