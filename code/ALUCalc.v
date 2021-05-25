@@ -85,7 +85,7 @@ always @(posedge clk, posedge reset) begin
                 G12 <= E12+F12; 
                 G20 <= E20+F20; 
                 G21 <= E21+F21;
-                G22 <= E22+F21;  
+                G22 <= E22+F22;  
             end 
             
             else if (sel == 30)begin 
