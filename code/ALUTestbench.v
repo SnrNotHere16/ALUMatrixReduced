@@ -104,6 +104,38 @@ always #5 clk = ~clk;
        #20 dummy = select(26,2);
        #1 dummy = 5;
        $write("%d\n", eleOut);
+ //******************************
+        #20 dummy = select (29,2); //A+B
+       //Print out 
+       #20 dummy = select(29,2); 
+       $write("A+B =\n");
+       #21 dummy = select(18,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(19,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(20,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+       #20 dummy = select(21,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(22,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(23,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+        #20 dummy = select(24,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(25,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(26,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
 
        
        
