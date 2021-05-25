@@ -24,12 +24,36 @@ function select;
     end 
  endfunction 
  
+ function printMatOut; 
+    input a; 
+    begin 
+       dummy = select (18,2); 
+       $write("%d ", eleOut);
+       dummy = select (19,2); 
+       $write("%d ", eleOut);
+       dummy = select (20,2); 
+       $write("%d\n", eleOut);
+       dummy = select (21,2); 
+       $write("%d ", eleOut);
+       dummy = select (22,2); 
+       $write("%d ", eleOut);
+       dummy = select (23,2); 
+       $write("%d\n", eleOut);
+       dummy = select (24,2); 
+       $write("%d ", eleOut);
+       dummy = select (25,2); 
+       $write("%d ", eleOut);
+       dummy = select (26,2); 
+       $write("%d\n", eleOut);
+    end 
+  endfunction 
 always #5 clk = ~clk;
     initial begin 
        clk  = 0;
        reset  = 1;
        #50 reset  = 0;    
        dummy = select(18,30);
+       //Initialize the values of matrices A and B
        #20 dummy = select (0,0);  
        #20 dummy = select (1,1);  
        #20 dummy = select (2,2);
@@ -48,5 +72,40 @@ always #5 clk = ~clk;
        #20 dummy = select (15,6);  
        #20 dummy = select (16,7);  
        #20 dummy = select (17,8);
+       //******************************
+       #20 dummy = select (28,2); //transpose
+       //Print out 
+       #20 dummy = select(28,2); 
+       $write("A' =\n");
+       #21 dummy = select(18,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(19,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(20,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+       #20 dummy = select(21,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(22,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(23,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+        #20 dummy = select(24,2);
+       #1 dummy = 5; 
+       $write("%d ",eleOut);
+       #20 dummy = select(25,2);
+       #1 dummy = 5;
+       $write("%d ", eleOut);
+       #20 dummy = select(26,2);
+       #1 dummy = 5;
+       $write("%d\n", eleOut);
+
+       
+       
      end 
 endmodule
