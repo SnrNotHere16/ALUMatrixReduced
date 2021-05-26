@@ -1,4 +1,3 @@
-INFO: [Simtcl 6-17] Simulation restarted
 run 1382 ns
 Matrix:
          0          1          2
@@ -54,3 +53,9 @@ A*B =
         18         22         10
         90        105         56
        219        260        157
+5*A =
+         0         10         10
+        15         20         40
+        30         85         90
+det(A) =
+         42
