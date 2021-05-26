@@ -395,11 +395,11 @@ always #5 clk = ~clk;
        #1 dummy = 5;
        $write("%d\n", eleOut);
   //******************************
-        #9 dummy = select(40,2);
-        #1 dummy = select (32,2); //2*A
+        #9 dummy = select(40,5);
+        #1 dummy = select (32,5); //5*A
        //Print out 
-       #9 dummy = select(32,2); 
-       $write("2*A =\n");
+       #9 dummy = select(32,5); 
+       $write("5*A =\n");
        #9 dummy = select(18,2);
        #1 dummy = 5; 
        $write("%d ",eleOut);
