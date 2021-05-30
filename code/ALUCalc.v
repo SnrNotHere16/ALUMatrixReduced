@@ -16,11 +16,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ALUCalc(clk, reset, sel, eleIn, eleOut);
+module ALUCalc(clk, reset, eleSel, sel, eleIn, eleOut, LED);
 input clk, reset; 
+input [4:0] eleSel; 
 input [5:0] sel; 
 input [31:0] eleIn; 
-output reg [31:0] eleOut; 
+output reg [31:0] eleOut;
+output reg [15:0] LED;  
 reg [31:0] E00, E01, E02, 
            E10, E11, E12,     
            E20, E21, E22, 
@@ -168,6 +170,39 @@ always @(posedge clk, posedge reset) begin
            27: eleOut = det; 
            40: c = eleIn; 
           default: eleOut = det; 
+        endcase
+        case(eleSel)
+            0: LED = E00; 
+            1: LED = E01; 
+            2: LED = E02; 
+            3: LED = E10; 
+            4: LED = E11; 
+            5: LED = E12; 
+            6: LED = E20; 
+            7: LED = E21; 
+            8: LED = E22;
+            9: LED = F00; 
+           10: LED = F01; 
+           11: LED = F02; 
+           12: LED = F10; 
+           13: LED = F11; 
+           14: LED = F12; 
+           15: LED = F20; 
+           16: LED = F21; 
+           17: LED = F22;
+           18: LED = G00; 
+           19: LED = G01; 
+           20: LED = G02; 
+           21: LED = G10; 
+           22: LED = G11; 
+           23: LED = G12; 
+           24: LED = G20; 
+           25: LED = G21; 
+           26: LED = G22;
+           27: LED = sel; 
+           28: LED = eleIn; 
+           29: LED = eleOut; 
+          default: LED = 16'hFFFF; 
         endcase
     end  
 endmodule
