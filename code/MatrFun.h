@@ -1,5 +1,6 @@
  #ifndef MATFUN_H
  #define MATFUN_H
+
 //AXI GPIO driver
 #include "xgpio.h"
 
@@ -23,9 +24,13 @@ void initMatrB(int a, int b, int c,
 		   	   int d, int e, int f,
 			   int g, int h, int i);
 
-void printMatrA();
+void printMatrA(int a, int b, int c,
+				int d, int e, int f,
+				int g, int h, int i);
 
-void printMatrB();
+void printMatrB(int a, int b, int c,
+				int d, int e, int f,
+				int g, int h, int i);
 
 void printMatrC();
 
@@ -39,7 +44,7 @@ void subtraction();
 
 void multiplication();
 
-void scalarMult();
+void scalarMult(int c);
 
 void determinant();
 
