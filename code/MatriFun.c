@@ -14,28 +14,39 @@ void initGPIO(){
 	XGpio_SetDataDirection(&gpio1, 1, 0x00000000); // set Element 1 to output
 	XGpio_SetDataDirection(&gpio2, 1, 0xFFFFFFFF); // set Element 2 to input
 }
+
+void resetMatr() {
+	for (int i = 0; i <= 26; i++) {
+	XGpio_DiscreteWrite(&gpio0, 1, i);
+	XGpio_DiscreteWrite(&gpio1, 1, 0);
+	}
+	XGpio_DiscreteWrite(&gpio0, 1, 27);
+
+}
 void initMatrA(int a, int b, int c,
 			   int d, int e, int f,
 			   int g, int h, int i){
 	//op:0-8 set matrix a
-	XGpio_DiscreteWrite(&gpio1, 1, a);
 	XGpio_DiscreteWrite(&gpio0, 1, 0);
-	XGpio_DiscreteWrite(&gpio1, 1, b);
+	XGpio_DiscreteWrite(&gpio1, 1, a);
 	XGpio_DiscreteWrite(&gpio0, 1, 1);
-	XGpio_DiscreteWrite(&gpio1, 1, c);
+	XGpio_DiscreteWrite(&gpio1, 1, b);
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
 	XGpio_DiscreteWrite(&gpio0, 1, 2);
-	XGpio_DiscreteWrite(&gpio1, 1, d);
+	XGpio_DiscreteWrite(&gpio1, 1, c);
 	XGpio_DiscreteWrite(&gpio0, 1, 3);
-	XGpio_DiscreteWrite(&gpio1, 1, e);
+	XGpio_DiscreteWrite(&gpio1, 1, d);
 	XGpio_DiscreteWrite(&gpio0, 1, 4);
-	XGpio_DiscreteWrite(&gpio1, 1, f);
+	XGpio_DiscreteWrite(&gpio1, 1, e);
 	XGpio_DiscreteWrite(&gpio0, 1, 5);
-	XGpio_DiscreteWrite(&gpio1, 1, g);
+	XGpio_DiscreteWrite(&gpio1, 1, f);
 	XGpio_DiscreteWrite(&gpio0, 1, 6);
-	XGpio_DiscreteWrite(&gpio1, 1, h);
+	XGpio_DiscreteWrite(&gpio1, 1, g);
 	XGpio_DiscreteWrite(&gpio0, 1, 7);
-	XGpio_DiscreteWrite(&gpio1, 1, i);
+	XGpio_DiscreteWrite(&gpio1, 1, h);
 	XGpio_DiscreteWrite(&gpio0, 1, 8);
+	XGpio_DiscreteWrite(&gpio1, 1, i);
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
 	printMatrA(a,b,c,d,e,f,g,h,i);
 
 
@@ -45,25 +56,33 @@ void initMatrB(int a, int b, int c,
 		   int d, int e, int f,
 		   int g, int h, int i){
 
-	//op:9-17 set matrix a
-	XGpio_DiscreteWrite(&gpio1, 1, a);
-	XGpio_DiscreteWrite(&gpio0, 1, 9);
-	XGpio_DiscreteWrite(&gpio1, 1, b);
+	//op:9-17 set matrix
 	XGpio_DiscreteWrite(&gpio0, 1, 10);
-	XGpio_DiscreteWrite(&gpio1, 1, c);
+	XGpio_DiscreteWrite(&gpio1, 1, b);
+	XGpio_DiscreteWrite(&gpio0, 1, 9);
+	XGpio_DiscreteWrite(&gpio1, 1, a);
 	XGpio_DiscreteWrite(&gpio0, 1, 11);
-	XGpio_DiscreteWrite(&gpio1, 1, d);
+	XGpio_DiscreteWrite(&gpio1, 1, c);
 	XGpio_DiscreteWrite(&gpio0, 1, 12);
-	XGpio_DiscreteWrite(&gpio1, 1, e);
+	XGpio_DiscreteWrite(&gpio1, 1, d);
 	XGpio_DiscreteWrite(&gpio0, 1, 13);
-	XGpio_DiscreteWrite(&gpio1, 1, f);
+	XGpio_DiscreteWrite(&gpio1, 1, e);
 	XGpio_DiscreteWrite(&gpio0, 1, 14);
-	XGpio_DiscreteWrite(&gpio1, 1, g);
+	XGpio_DiscreteWrite(&gpio1, 1, f);
 	XGpio_DiscreteWrite(&gpio0, 1, 15);
-	XGpio_DiscreteWrite(&gpio1, 1, h);
-	XGpio_DiscreteWrite(&gpio0, 1, 16);
-	XGpio_DiscreteWrite(&gpio1, 1, i);
+	XGpio_DiscreteWrite(&gpio1, 1, g);
+	//XGpio_DiscreteWrite(&gpio0, 1, 63);
+
 	XGpio_DiscreteWrite(&gpio0, 1, 17);
+	XGpio_DiscreteWrite(&gpio1, 1, i);
+	XGpio_DiscreteWrite(&gpio0, 1, 16);
+	XGpio_DiscreteWrite(&gpio1, 1, h);
+	/*
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
+	XGpio_DiscreteWrite(&gpio0, 1, 17);
+	XGpio_DiscreteWrite(&gpio1, 1, i);
+	*/
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
 	printMatrB(a,b,c,d,e,f,g,h,i);
 
 }
@@ -119,11 +138,16 @@ void transpose(){
 }
 
 void addition(){
-
+	XGpio_DiscreteWrite(&gpio0, 1, 29);
+	xil_printf("A+B = \n");
 }
 
 void subtraction(){
-
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
+	XGpio_DiscreteWrite(&gpio0, 1, 30);
+	xil_printf("A-B = \n");
 }
 
 void multiplication(){
