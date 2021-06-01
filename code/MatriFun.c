@@ -195,6 +195,12 @@ void multiplication(){
 }
 
 void scalarMult(int c){
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
+	XGpio_DiscreteWrite(&gpio1, 1, c);
+	XGpio_DiscreteWrite(&gpio0, 1, 40);
+	XGpio_DiscreteWrite(&gpio0, 1, 32);
+	xil_printf("%d*A = \n",c);
+
 
 }
 
