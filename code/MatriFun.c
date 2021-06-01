@@ -3,6 +3,8 @@
 #define Gpio1ID XPAR_AXI_GPIO_1_DEVICE_ID
 #define Gpio2ID XPAR_AXI_GPIO_2_DEVICE_ID
 XGpio gpio0, gpio1, gpio2;
+int matA [9];
+int matB [9];
 void initGPIO(){
 	//initialize AXI GPIO
 	XGpio_Initialize(&gpio0, Gpio0ID);
@@ -48,45 +50,34 @@ void initMatrA(int a, int b, int c,
 			   int d, int e, int f,
 			   int g, int h, int i){
 
-	//int k = inputThreeDigitNumberTX();
-	//xil_printf("%d\n", k);
 	XGpio_DiscreteWrite(&gpio0, 1, 0);
 	XGpio_DiscreteWrite(&gpio1, 1, a);
-	//int m = inputThreeDigitNumberTX();
-	//xil_printf("%d\n", m);
+	matA[0] = a;
 	XGpio_DiscreteWrite(&gpio0, 1, 1);
 	XGpio_DiscreteWrite(&gpio1, 1, b);
-	//m = inputThreeDigitNumberTX();
-
-	//xil_printf("%d\n", m);
+	matA[1] = b;
 	XGpio_DiscreteWrite(&gpio0, 1, 63);
 	XGpio_DiscreteWrite(&gpio0, 1, 2);
 	XGpio_DiscreteWrite(&gpio1, 1, c);
-	//m = inputThreeDigitNumberTX();
-	//xil_printf("%d\n", m);
+	matA[2] = c;
 	XGpio_DiscreteWrite(&gpio0, 1, 3);
 	XGpio_DiscreteWrite(&gpio1, 1, d);
-	//m = inputThreeDigitNumberTX();
-	//xil_printf("%d\n", m);
+	matA[3] = d;
 	XGpio_DiscreteWrite(&gpio0, 1, 4);
 	XGpio_DiscreteWrite(&gpio1, 1, e);
-	//m = inputThreeDigitNumberTX();
-	//xil_printf("%d\n", m);
+	matA[4] = e;
 	XGpio_DiscreteWrite(&gpio0, 1, 5);
 	XGpio_DiscreteWrite(&gpio1, 1, f);
-	//m = inputThreeDigitNumberTX();
-	//xil_printf("%d\n", m);
+	matA[5] = f;
 	XGpio_DiscreteWrite(&gpio0, 1, 6);
 	XGpio_DiscreteWrite(&gpio1, 1, g);
-	//m = inputThreeDigitNumberTX();
-	//xil_printf("%d\n", m);
+	matA[6] = g;
 	XGpio_DiscreteWrite(&gpio0, 1, 7);
 	XGpio_DiscreteWrite(&gpio1, 1, h);
-	//m = inputThreeDigitNumberTX();
-	//xil_printf("%d\n", m);
+	matA[7] = h;
 	XGpio_DiscreteWrite(&gpio0, 1, 8);
 	XGpio_DiscreteWrite(&gpio1, 1, i);
-
+	matA[8] = i;
 	printMatrA(a,b,c,d,e,f,g,h,i);
 
 }
@@ -96,48 +87,39 @@ void initMatrB(int a, int b, int c,
 		   int g, int h, int i){
 
 	//op:9-17 set matrix
-	int m = inputThreeDigitNumberTX();
-		xil_printf("0:%d\n", m);
 		XGpio_DiscreteWrite(&gpio0, 1, 9);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
-		m = inputThreeDigitNumberTX();
-		xil_printf("1:%d\n", m);
+		XGpio_DiscreteWrite(&gpio1, 1, a);
+		matB[0] = a;
 		XGpio_DiscreteWrite(&gpio0, 1, 62);
 		XGpio_DiscreteWrite(&gpio0, 1, 10);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
-		m = inputThreeDigitNumberTX();
-		xil_printf("2:%d\n", m);
+		XGpio_DiscreteWrite(&gpio1, 1, b);
+		matB[1] = b;
 		XGpio_DiscreteWrite(&gpio0, 1, 62);
 		XGpio_DiscreteWrite(&gpio0, 1, 11);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
-		m = inputThreeDigitNumberTX();
-		xil_printf("3:%d\n", m);
+		XGpio_DiscreteWrite(&gpio1, 1, c);
+		matB[2] = c;
 		XGpio_DiscreteWrite(&gpio0, 1, 12);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
-		m = inputThreeDigitNumberTX();
-		xil_printf("4:%d\n", m);
+		XGpio_DiscreteWrite(&gpio1, 1, d);
+		matB[3] = d;
 		XGpio_DiscreteWrite(&gpio0, 1, 13);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
-		m = inputThreeDigitNumberTX();
-		xil_printf("5:%d\n", m);
+		XGpio_DiscreteWrite(&gpio1, 1, e);
+		matB[4] = e;
 		XGpio_DiscreteWrite(&gpio0, 1, 62);
 		XGpio_DiscreteWrite(&gpio0, 1, 14);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
-		m = inputThreeDigitNumberTX();
-		xil_printf("6:%d\n", m);
+		XGpio_DiscreteWrite(&gpio1, 1, f);
+		matB[5] = f;
 		XGpio_DiscreteWrite(&gpio0, 1, 15);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
-		m = inputThreeDigitNumberTX();
-		xil_printf("7:%d\n", m);
+		XGpio_DiscreteWrite(&gpio1, 1, g);
+		matB[6] = g;
 		XGpio_DiscreteWrite(&gpio0, 1, 62);
 		XGpio_DiscreteWrite(&gpio0, 1, 16);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
+		XGpio_DiscreteWrite(&gpio1, 1, h);
+		matB[7] = h;
 		XGpio_DiscreteWrite(&gpio0, 1, 62);
-		m = inputThreeDigitNumberTX();
-		xil_printf("8:%d\n", m);
 		XGpio_DiscreteWrite(&gpio0, 1, 62);
 		XGpio_DiscreteWrite(&gpio0, 1, 17);
-		XGpio_DiscreteWrite(&gpio1, 1, m);
+		XGpio_DiscreteWrite(&gpio1, 1, i);
+		matB[8] = i;
 		printMatrB(a,b,c,d,e,f,g,h,i);
 
 }
@@ -189,7 +171,7 @@ void printDeterminant(){
 
 void transpose(){
 	XGpio_DiscreteWrite(&gpio0, 1, 16);
-	XGpio_DiscreteWrite(&gpio1, 1, 8);
+	XGpio_DiscreteWrite(&gpio1, 1, matB[7]);
 	XGpio_DiscreteWrite(&gpio0, 1, 28);
 	xil_printf("\n\n");
 }
