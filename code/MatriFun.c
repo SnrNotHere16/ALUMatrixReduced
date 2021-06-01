@@ -189,7 +189,9 @@ void subtraction(){
 }
 
 void multiplication(){
-
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
+	XGpio_DiscreteWrite(&gpio0, 1, 31);
+	xil_printf("A*B = \n");
 }
 
 void scalarMult(int c){
