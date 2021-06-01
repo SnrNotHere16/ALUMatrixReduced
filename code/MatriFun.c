@@ -23,32 +23,71 @@ void resetMatr() {
 	XGpio_DiscreteWrite(&gpio0, 1, 27);
 
 }
+void sendString(unsigned char message []){
+	char i = 0;
+	 while(message[i]!='\0'){
+		 XUartLite_SendByte(XPAR_AXI_UARTLITE_0_BASEADDR, message[i]);
+	    i++;
+	  }
+}
+
+int inputThreeDigitNumberTX(){
+	int total = 0;
+	int static first = 0;
+	if (first != 0)
+	while (XUartLite_RecvByte (XPAR_AXI_UARTLITE_0_BASEADDR)!=13);
+	if (first == 0)
+		first++;
+	sendString("Enter your number\n");
+	total +=  (XUartLite_RecvByte (XPAR_AXI_UARTLITE_0_BASEADDR)-48)*100;
+	total +=  (XUartLite_RecvByte (XPAR_AXI_UARTLITE_0_BASEADDR)-48)*10;
+	total +=  XUartLite_RecvByte (XPAR_AXI_UARTLITE_0_BASEADDR)-48;
+	return total;
+}
 void initMatrA(int a, int b, int c,
 			   int d, int e, int f,
 			   int g, int h, int i){
-	//op:0-8 set matrix a
+
+	//int k = inputThreeDigitNumberTX();
+	//xil_printf("%d\n", k);
 	XGpio_DiscreteWrite(&gpio0, 1, 0);
 	XGpio_DiscreteWrite(&gpio1, 1, a);
+	//int m = inputThreeDigitNumberTX();
+	//xil_printf("%d\n", m);
 	XGpio_DiscreteWrite(&gpio0, 1, 1);
 	XGpio_DiscreteWrite(&gpio1, 1, b);
+	//m = inputThreeDigitNumberTX();
+
+	//xil_printf("%d\n", m);
 	XGpio_DiscreteWrite(&gpio0, 1, 63);
 	XGpio_DiscreteWrite(&gpio0, 1, 2);
 	XGpio_DiscreteWrite(&gpio1, 1, c);
+	//m = inputThreeDigitNumberTX();
+	//xil_printf("%d\n", m);
 	XGpio_DiscreteWrite(&gpio0, 1, 3);
 	XGpio_DiscreteWrite(&gpio1, 1, d);
+	//m = inputThreeDigitNumberTX();
+	//xil_printf("%d\n", m);
 	XGpio_DiscreteWrite(&gpio0, 1, 4);
 	XGpio_DiscreteWrite(&gpio1, 1, e);
+	//m = inputThreeDigitNumberTX();
+	//xil_printf("%d\n", m);
 	XGpio_DiscreteWrite(&gpio0, 1, 5);
 	XGpio_DiscreteWrite(&gpio1, 1, f);
+	//m = inputThreeDigitNumberTX();
+	//xil_printf("%d\n", m);
 	XGpio_DiscreteWrite(&gpio0, 1, 6);
 	XGpio_DiscreteWrite(&gpio1, 1, g);
+	//m = inputThreeDigitNumberTX();
+	//xil_printf("%d\n", m);
 	XGpio_DiscreteWrite(&gpio0, 1, 7);
 	XGpio_DiscreteWrite(&gpio1, 1, h);
+	//m = inputThreeDigitNumberTX();
+	//xil_printf("%d\n", m);
 	XGpio_DiscreteWrite(&gpio0, 1, 8);
 	XGpio_DiscreteWrite(&gpio1, 1, i);
-	XGpio_DiscreteWrite(&gpio0, 1, 63);
-	printMatrA(a,b,c,d,e,f,g,h,i);
 
+	printMatrA(a,b,c,d,e,f,g,h,i);
 
 }
 
@@ -57,33 +96,49 @@ void initMatrB(int a, int b, int c,
 		   int g, int h, int i){
 
 	//op:9-17 set matrix
-	XGpio_DiscreteWrite(&gpio0, 1, 10);
-	XGpio_DiscreteWrite(&gpio1, 1, b);
-	XGpio_DiscreteWrite(&gpio0, 1, 9);
-	XGpio_DiscreteWrite(&gpio1, 1, a);
-	XGpio_DiscreteWrite(&gpio0, 1, 11);
-	XGpio_DiscreteWrite(&gpio1, 1, c);
-	XGpio_DiscreteWrite(&gpio0, 1, 12);
-	XGpio_DiscreteWrite(&gpio1, 1, d);
-	XGpio_DiscreteWrite(&gpio0, 1, 13);
-	XGpio_DiscreteWrite(&gpio1, 1, e);
-	XGpio_DiscreteWrite(&gpio0, 1, 14);
-	XGpio_DiscreteWrite(&gpio1, 1, f);
-	XGpio_DiscreteWrite(&gpio0, 1, 15);
-	XGpio_DiscreteWrite(&gpio1, 1, g);
-	//XGpio_DiscreteWrite(&gpio0, 1, 63);
-
-	XGpio_DiscreteWrite(&gpio0, 1, 17);
-	XGpio_DiscreteWrite(&gpio1, 1, i);
-	XGpio_DiscreteWrite(&gpio0, 1, 16);
-	XGpio_DiscreteWrite(&gpio1, 1, h);
-	/*
-	XGpio_DiscreteWrite(&gpio0, 1, 63);
-	XGpio_DiscreteWrite(&gpio0, 1, 17);
-	XGpio_DiscreteWrite(&gpio1, 1, i);
-	*/
-	XGpio_DiscreteWrite(&gpio0, 1, 63);
-	printMatrB(a,b,c,d,e,f,g,h,i);
+	int m = inputThreeDigitNumberTX();
+		xil_printf("0:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 9);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		m = inputThreeDigitNumberTX();
+		xil_printf("1:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 62);
+		XGpio_DiscreteWrite(&gpio0, 1, 10);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		m = inputThreeDigitNumberTX();
+		xil_printf("2:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 62);
+		XGpio_DiscreteWrite(&gpio0, 1, 11);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		m = inputThreeDigitNumberTX();
+		xil_printf("3:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 12);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		m = inputThreeDigitNumberTX();
+		xil_printf("4:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 13);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		m = inputThreeDigitNumberTX();
+		xil_printf("5:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 62);
+		XGpio_DiscreteWrite(&gpio0, 1, 14);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		m = inputThreeDigitNumberTX();
+		xil_printf("6:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 15);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		m = inputThreeDigitNumberTX();
+		xil_printf("7:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 62);
+		XGpio_DiscreteWrite(&gpio0, 1, 16);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		XGpio_DiscreteWrite(&gpio0, 1, 62);
+		m = inputThreeDigitNumberTX();
+		xil_printf("8:%d\n", m);
+		XGpio_DiscreteWrite(&gpio0, 1, 62);
+		XGpio_DiscreteWrite(&gpio0, 1, 17);
+		XGpio_DiscreteWrite(&gpio1, 1, m);
+		printMatrB(a,b,c,d,e,f,g,h,i);
 
 }
 
@@ -133,18 +188,19 @@ void printDeterminant(){
 }
 
 void transpose(){
+	XGpio_DiscreteWrite(&gpio0, 1, 16);
+	XGpio_DiscreteWrite(&gpio1, 1, 8);
 	XGpio_DiscreteWrite(&gpio0, 1, 28);
 	xil_printf("\n\n");
 }
 
 void addition(){
+	XGpio_DiscreteWrite(&gpio0, 1, 62);
 	XGpio_DiscreteWrite(&gpio0, 1, 29);
 	xil_printf("A+B = \n");
 }
 
 void subtraction(){
-	XGpio_DiscreteWrite(&gpio0, 1, 63);
-	XGpio_DiscreteWrite(&gpio0, 1, 63);
 	XGpio_DiscreteWrite(&gpio0, 1, 63);
 	XGpio_DiscreteWrite(&gpio0, 1, 30);
 	xil_printf("A-B = \n");
@@ -161,3 +217,5 @@ void scalarMult(int c){
 void determinant(){
 
 }
+
+
