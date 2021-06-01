@@ -15,4 +15,6 @@ int main()
 	printMatrC();
 	multiplication();
 	printMatrC();
+	scalarMult(2);
+	printMatrC();
 }
