@@ -164,9 +164,8 @@ void printMatrC(){
 	xil_printf("%d\n\n", XGpio_DiscreteRead(&gpio2,1));
 }
 void printDeterminant(){
-	xil_printf("det(A) = ");
-
-
+	XGpio_DiscreteWrite(&gpio0, 1, 27);
+	xil_printf("det(A) = %d\n",XGpio_DiscreteRead(&gpio2,1));
 }
 
 void transpose(){
@@ -196,16 +195,21 @@ void multiplication(){
 
 void scalarMult(int c){
 	XGpio_DiscreteWrite(&gpio0, 1, 63);
-	XGpio_DiscreteWrite(&gpio1, 1, c);
 	XGpio_DiscreteWrite(&gpio0, 1, 40);
+	XGpio_DiscreteWrite(&gpio1, 1, c);
 	XGpio_DiscreteWrite(&gpio0, 1, 32);
 	xil_printf("%d*A = \n",c);
-
-
+	XGpio_DiscreteWrite(&gpio0, 1, 0);
+	XGpio_DiscreteWrite(&gpio1, 1, matA[0]);
+	XGpio_DiscreteWrite(&gpio0, 1, 1);
+	XGpio_DiscreteWrite(&gpio1, 1, matA[1]);
 }
 
 void determinant(){
-
+	XGpio_DiscreteWrite(&gpio0, 1, 63);
+	XGpio_DiscreteWrite(&gpio0, 1, 33);
+	XGpio_DiscreteWrite(&gpio0, 1, 27);
+	xil_printf("det(A) = %d\n",XGpio_DiscreteRead(&gpio2,1));
 }
 
 
