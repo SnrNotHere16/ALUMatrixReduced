@@ -15,7 +15,7 @@
 #include "xparameters.h"
 #include <stdio.h>
 void initGPIO();
-
+//resets all the matrice values to zero
 void resetMatr();
 
 void initMatrA(int a, int b, int c,
@@ -37,15 +37,15 @@ void printMatrB(int a, int b, int c,
 void printMatrC();
 
 void printDeterminant();
-//works 
+
 void transpose();
-//works 
+
 void addition();
-//works 
+
 void subtraction();
-//works 
+
 void multiplication();
-//works 
+
 void scalarMult(int c);
 
 void determinant();
