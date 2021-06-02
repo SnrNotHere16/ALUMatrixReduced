@@ -25,27 +25,7 @@ void resetMatr() {
 	XGpio_DiscreteWrite(&gpio0, 1, 27);
 
 }
-void sendString(unsigned char message []){
-	char i = 0;
-	 while(message[i]!='\0'){
-		 XUartLite_SendByte(XPAR_AXI_UARTLITE_0_BASEADDR, message[i]);
-	    i++;
-	  }
-}
 
-int inputThreeDigitNumberTX(){
-	int total = 0;
-	int static first = 0;
-	if (first != 0)
-	while (XUartLite_RecvByte (XPAR_AXI_UARTLITE_0_BASEADDR)!=13);
-	if (first == 0)
-		first++;
-	sendString("Enter your number\n");
-	total +=  (XUartLite_RecvByte (XPAR_AXI_UARTLITE_0_BASEADDR)-48)*100;
-	total +=  (XUartLite_RecvByte (XPAR_AXI_UARTLITE_0_BASEADDR)-48)*10;
-	total +=  XUartLite_RecvByte (XPAR_AXI_UARTLITE_0_BASEADDR)-48;
-	return total;
-}
 void initMatrA(int a, int b, int c,
 			   int d, int e, int f,
 			   int g, int h, int i){
